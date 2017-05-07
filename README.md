@@ -1,2 +1,3 @@
-# components
-Simulation of components
+# Simulation of eCommerce store
+
+TBD
