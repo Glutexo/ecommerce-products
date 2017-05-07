@@ -1,3 +1,3 @@
 # Simulation of eCommerce store
 
-TBD
+Read Issue #1 to get started.
