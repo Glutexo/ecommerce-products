@@ -19,7 +19,7 @@ class ProductTest < Test::Unit::TestCase
     assert_equal price, product.price
   end
 
-  # Test data type conversion.
+  # Test value conversion.
 
   def test_name_is_string
     product = ECommerce::Product.new({ line: 'MacBook', variety: 'Pro' },
@@ -30,6 +30,11 @@ class ProductTest < Test::Unit::TestCase
   def test_price_is_float
     product = ECommerce::Product.new 'MacBook Pro', 49999
     assert product.price.is_a? Float
+  end
+
+  def test_price_is_rounded
+    product = ECommerce::Product.new 'MacBook Pro', 49999.985
+    assert_equal 49999.99, product.price
   end
 
 end

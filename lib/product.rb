@@ -1,3 +1,4 @@
+require_relative 'config'
 module ECommerce
 
   class Product
@@ -14,7 +15,7 @@ module ECommerce
     end
 
     def price= price
-      @price = price.to_f
+      @price = price.to_f.round ECommerce::PRICE_PRECISION
     end
 
   end
