@@ -4,8 +4,6 @@ module ECommerce
 
   PRICE_PRECISION = 2
   CURRENCY        = 'Kč'
-  LOCALE          = :cs
+  LOCALE          = R18n::Locale::load :cs
 
 end
-
-R18n.set ECommerce::LOCALE

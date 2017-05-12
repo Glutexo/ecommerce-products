@@ -1,10 +1,9 @@
 require_relative 'config'
+require_relative 'helper'
 
 module ECommerce
 
   class Product
-
-    include R18n::Helpers
 
     attr_reader :name, :price
 
@@ -22,8 +21,7 @@ module ECommerce
     end
 
     def to_s
-      price_formatted = l @price
-      "#{@name} (#{price_formatted} #{CURRENCY})"
+      "#{@name} (#{Helper.format_price(@price)})"
     end
 
   end
