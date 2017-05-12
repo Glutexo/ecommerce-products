@@ -5,8 +5,16 @@ module ECommerce
    attr_reader :name, :price
 
     def initialize name, price
-      @name  = name
-      @price = price
+      self.name  = name
+      self.price = price
+    end
+
+    def name= name
+      @name = name.to_s
+    end
+
+    def price= price
+      @price = price.to_f
     end
 
   end
