@@ -1,3 +1,3 @@
 source 'https://rubygems.org'
 
-# Nothing.
+gem 'r18n-core'

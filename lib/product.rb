@@ -1,9 +1,12 @@
 require_relative 'config'
+
 module ECommerce
 
   class Product
 
-   attr_reader :name, :price
+    include R18n::Helpers
+
+    attr_reader :name, :price
 
     def initialize name, price
       self.name  = name
@@ -15,7 +18,12 @@ module ECommerce
     end
 
     def price= price
-      @price = price.to_f.round ECommerce::PRICE_PRECISION
+      @price = price.to_f.round PRICE_PRECISION
+    end
+
+    def to_s
+      price_formatted = l @price
+      "#{@name} (#{price_formatted} #{CURRENCY})"
     end
 
   end

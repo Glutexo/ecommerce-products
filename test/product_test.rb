@@ -37,4 +37,11 @@ class ProductTest < Test::Unit::TestCase
     assert_equal 49999.99, product.price
   end
 
+  # Test output.
+
+  def test_product_is_printable
+    product = ECommerce::Product.new 'MacBook Pro', 49999.99
+    assert_equal 'MacBook Pro (49 999,99 Kč)', product.to_s
+  end
+
 end
