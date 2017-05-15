@@ -1,10 +1,10 @@
-require_relative 'config'
-require_relative 'helper'
 require 'bigdecimal'
 
 module ECommerce
 
   class Product
+
+    CURRENCY = 'Kč'
 
     attr_accessor :name
     attr_reader   :price
@@ -19,7 +19,7 @@ module ECommerce
     end
 
     def to_s
-      "#{@name} (#{Helper.format_price(@price)})"
+      "#{@name} (#{@price.to_s('F')} #{CURRENCY})"
     end
 
   end

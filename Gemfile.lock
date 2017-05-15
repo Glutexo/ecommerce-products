@@ -1,13 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    r18n-core (2.1.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  r18n-core
-
-BUNDLED WITH
-   1.14.6

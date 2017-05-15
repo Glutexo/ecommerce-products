@@ -5,7 +5,6 @@ task :print do
 end
 
 task :test do
-  ruby 'test/helper_test.rb'
   ruby 'test/product_test.rb'
 end
 

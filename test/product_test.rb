@@ -25,17 +25,12 @@ class ProductTest < Test::Unit::TestCase
 
   # Test output.
 
-  def test_print_product_with_simple_name
+  def test_simple_name_is_printed
     product = ECommerce::Product.new 'MacBook Pro', '49999.90'
-    assert_equal 'MacBook Pro (49 999,90 Kč)', product.to_s
+    assert_equal 'MacBook Pro (49999.9 Kč)', product.to_s
   end
 
-  def test_print_product_with_precise_price
-    product = ECommerce::Product.new 'MacBook Pro', '49999.985'
-    assert_equal 'MacBook Pro (49 999,99 Kč)', product.to_s
-  end
-
-  def test_print_product_with_complex_name
+  def test_complex_name_is_printed
     object_with_name = Object.new
     def object_with_name.to_s
       'MacBook Pro'
@@ -44,7 +39,17 @@ class ProductTest < Test::Unit::TestCase
     # Kind of testing Ruby internals here, but also making sure there is nothing
     # fishy going on.
     product = ECommerce::Product.new object_with_name, '49999.99'
-    assert_equal 'MacBook Pro (49 999,99 Kč)', product.to_s
+    assert_equal 'MacBook Pro (49999.99 Kč)', product.to_s
+  end
+
+  def test_price_uses_float_notation
+    product = ECommerce::Product.new 'MacBook Pro', '49999'
+    assert_equal 'MacBook Pro (49999.0 Kč)', product.to_s
+  end
+
+  def test_price_is_not_rounded
+    product = ECommerce::Product.new 'MacBook Pro', '49999.985'
+    assert_equal 'MacBook Pro (49999.985 Kč)', product.to_s
   end
 
 end
