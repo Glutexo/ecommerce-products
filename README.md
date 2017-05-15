@@ -4,7 +4,7 @@ Read Issue #1 to get started.
 
 ## Usage
 
-Use the `ECommerce::Product` class to represent your products. Each product can
+Use the `Product` class to represent your products. Each product can
 have its price. The product can be formatted along with its price.
 
 A sample script is included. It can be run by `rake sample` task.
@@ -14,6 +14,6 @@ A sample script is included. It can be run by `rake sample` task.
 ```ruby
 require_relative('lib/product')
 
-product = ECommerce::Product.new 'MacBook Pro', 49999.9
-puts product # MacBook Pro (49 999,90 Kč)
+product = Product.new 'MacBook Pro', 49999.9
+puts product # MacBook Pro (49999.90 Kč)
 ```
