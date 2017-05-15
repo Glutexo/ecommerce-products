@@ -1,15 +1,21 @@
 require_relative 'config'
 require_relative 'helper'
+require 'bigdecimal'
 
 module ECommerce
 
   class Product
 
-    attr_accessor :name, :price
+    attr_accessor :name
+    attr_reader   :price
 
     def initialize name, price
-      @name  = name
-      @price = price
+      self.name  = name
+      self.price = price
+    end
+
+    def price= price
+      @price = price.is_a?(BigDecimal) ? price : BigDecimal.new(price)
     end
 
     def to_s

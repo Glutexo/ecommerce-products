@@ -7,7 +7,7 @@ module ECommerce
     class << self
 
       def format_price price
-        rounded   = price.to_f.round PRICE_PRECISION
+        rounded   = price.round PRICE_PRECISION
         localized = LOCALE.localize(rounded)
 
         separator = LOCALE.number_decimal
