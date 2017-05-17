@@ -15,5 +15,5 @@ A sample script is included. It can be run by `rake sample` task.
 require_relative('lib/product')
 
 product = Product.new 'MacBook Pro', 49999.9
-puts product # MacBook Pro (49999.90 Kč)
+puts product # MacBook Pro (49999.90)
 ```

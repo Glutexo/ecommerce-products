@@ -2,8 +2,6 @@ require 'bigdecimal'
 
 class Product
 
-  CURRENCY = 'Kč'
-
   attr_accessor :name
   attr_reader   :price
 
@@ -17,7 +15,7 @@ class Product
   end
 
   def to_s
-    "#{@name} (#{@price.to_s('F')} #{CURRENCY})"
+    "#{@name} (#{@price.to_s('F')})"
   end
 
 end
