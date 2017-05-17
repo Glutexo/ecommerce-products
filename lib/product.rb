@@ -15,7 +15,7 @@ class Product
   end
 
   def to_s
-    "#{@name} (#{@price.to_s('F')})"
+    "#{@name} #{@price.to_s('F')}"
   end
 
 end
