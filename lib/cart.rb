@@ -10,7 +10,7 @@ class Cart
   end
 
   def sum
-    @products.map(&:price).sum
+    @products.sum &:price
   end
 
   def min
