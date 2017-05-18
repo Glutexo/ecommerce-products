@@ -28,6 +28,22 @@ class CartTest < Test::Unit::TestCase
     assert_equal prices.sum.to_s('F'), cart.to_s
   end
 
+  def test_cart_finds_the_cheapest_product
+    products = { halfway:   Product.new('MacBook Pro', '55990.00'),
+                 expensive: Product.new('Mac Pro', '95990.00'),
+                 cheap:     Product.new('iMac', '39990.00') }
+    cart = Cart.new products.values
+    assert_same products[:cheap], cart.min
+  end
+
+  def test_cart_finds_the_most_expensive_product
+    products = { halfway:   Product.new('MacBook Pro', '55990.00'),
+                 expensive: Product.new('Mac Pro', '95990.00'),
+                 cheap:     Product.new('iMac', '39990.00') }
+    cart = Cart.new products.values
+    assert_same products[:expensive], cart.max
+  end
+
   private
     def big_decimals strings
       strings.map &BigDecimal.method(:new)
@@ -36,4 +52,5 @@ class CartTest < Test::Unit::TestCase
     def products prices
       prices.map do |price| Product.new 'Product', price end
     end
+
 end

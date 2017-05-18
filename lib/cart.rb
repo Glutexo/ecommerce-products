@@ -13,6 +13,14 @@ class Cart
     @products.map(&:price).sum
   end
 
+  def min
+    @products.min_by &:price
+  end
+
+  def max
+    @products.max_by &:price
+  end
+
   def to_s
     Helper.format_price sum
   end
