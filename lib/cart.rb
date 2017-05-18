@@ -1,4 +1,5 @@
 require_relative 'product'
+require_relative 'helper'
 
 class Cart
 
@@ -13,7 +14,7 @@ class Cart
   end
 
   def to_s
-    sum.to_s 'F'
+    Helper.format_price sum
   end
 
 end

@@ -1,4 +1,5 @@
 require 'bigdecimal'
+require_relative 'helper'
 
 class Product
 
@@ -15,7 +16,7 @@ class Product
   end
 
   def to_s
-    "#{@name} #{@price.to_s('F')}"
+    "#{@name} #{Helper.format_price @price}"
   end
 
 end
