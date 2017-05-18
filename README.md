@@ -21,8 +21,6 @@ Use the `Product` class to represent your products, use the `Cart` class to
 represent a shopping cart. Instances of both classes can be printed out.
 `Product` prints its name and price, `Cart` prints the sum of its products.
 
-A sample script is included. It can be run by `rake sample` task.
-
 ### Example
 
 ```ruby
