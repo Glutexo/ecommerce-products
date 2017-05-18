@@ -11,8 +11,8 @@ This component offers classes to represent a `Product` and a `Cart`.
 `Cart` holds a list of `Product`s and can performs some simple
 operations upon them:
 * `#min` and `#max` methods find the cheapest `Product` or the most
-expensive respectively; if there are more products of the same extreme price in
-the Cart, an arbitrary Product is selected.
+expensive respectively; if there are more `Product`s of the same extreme price in
+the Cart, an arbitrary `Product` is selected.
 * `#sum` method computes the sum of the prices of the `Product`s.
 
 ## Usage
