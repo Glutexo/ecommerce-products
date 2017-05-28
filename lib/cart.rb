@@ -3,7 +3,7 @@ require_relative 'helper'
 
 class Cart
 
-  attr_reader :products
+  attr_accessor :products
 
   def initialize products
     @products = products

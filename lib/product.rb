@@ -3,8 +3,7 @@ require_relative 'helper'
 
 class Product
 
-  attr_accessor :name
-  attr_reader   :price
+  attr_accessor :name, :price
 
   def initialize name, price
     self.name  = name
