@@ -30,7 +30,7 @@ class Cart
   end
 
   def to_s
-    Helper.format_price sum_price
+    PriceWithVat.new(sum_price).to_s
   end
 
 end

@@ -22,12 +22,6 @@ class CartTest < Test::Unit::TestCase
     assert_equal product_list.sum(&:price), cart.sum_price
   end
 
-  def test_cart_prints_sum_of_product_prices
-    product_list = PRODUCTS.values
-    cart = Cart.new product_list
-    assert_equal Helper.format_price(cart.sum_price), cart.to_s
-  end
-
   def test_cart_computes_sum_of_product_vats
     product_list = PRODUCTS.values
     cart = Cart.new product_list
@@ -50,6 +44,14 @@ class CartTest < Test::Unit::TestCase
   def test_cart_finds_the_most_expensive_product
     cart = Cart.new PRODUCTS.values
     assert_same PRODUCTS[:expensive], cart.max
+  end
+
+  # Test output.
+
+  def test_cart_prints_sum
+    product_list = PRODUCTS.values
+    cart = Cart.new product_list
+    assert_equal "#{Helper.format_price(cart.sum_price)} #{Helper.format_price(cart.sum_vat)}", cart.to_s
   end
 
 end
