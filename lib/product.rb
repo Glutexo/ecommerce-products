@@ -1,4 +1,4 @@
-require_relative 'price_with_vat'
+require_relative 'price'
 require_relative 'helper'
 
 class Product
@@ -11,7 +11,7 @@ class Product
   end
 
   def price= price
-    @price = PriceWithVat.new price
+    @price = Price.new price
   end
 
   def to_s

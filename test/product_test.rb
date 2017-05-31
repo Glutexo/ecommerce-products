@@ -12,7 +12,7 @@ class ProductTest < Test::Unit::TestCase
   end
 
   def test_price_is_assigned
-    price = PriceWithVat.new BigDecimal.new '49999.99'
+    price = Price.new BigDecimal.new '49999.99'
     product = Product.new 'MacBook Pro', price
     assert_equal price, product.price
   end
@@ -21,7 +21,7 @@ class ProductTest < Test::Unit::TestCase
 
   def test_printing
     name = 'MacBook Pro'
-    price = PriceWithVat.new '49999.99'
+    price = Price.new '49999.99'
     product = Product.new name, price
     assert_equal "#{name} #{price}", product.to_s
   end

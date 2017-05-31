@@ -1,6 +1,6 @@
 require 'bigdecimal'
 
-class PriceWithVat
+class Price
 
   VAT_RATE = BigDecimal.new '0.21' # 21 %
 

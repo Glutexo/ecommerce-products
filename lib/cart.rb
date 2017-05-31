@@ -10,7 +10,7 @@ class Cart
   end
 
   def sum
-    PriceWithVat.sum @products.map &:price
+    Price.sum @products.map &:price
   end
 
   def min
