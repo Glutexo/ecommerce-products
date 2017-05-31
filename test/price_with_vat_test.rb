@@ -61,4 +61,13 @@ class PriceWithVatTest < Test::Unit::TestCase
                  price.to_s
   end
 
+  # Test summing.
+
+  def test_sum_is_computed
+    first = BigDecimal.new '49999.99'
+    second = BigDecimal.new '39990.00'
+    assert_equal PriceWithVat.new(first + second),
+                 PriceWithVat.sum([PriceWithVat.new(first), PriceWithVat.new(second)])
+  end
+
 end

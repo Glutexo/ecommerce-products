@@ -19,8 +19,7 @@ class CartTest < Test::Unit::TestCase
   def test_cart_computes_sum
     product_list = PRODUCTS.values
     cart = Cart.new product_list
-    sum = product_list.sum { |product| product.price.without_vat }
-    assert_equal PriceWithVat.new(sum), cart.sum
+    assert_equal PriceWithVat.sum(product_list.map &:price), cart.sum
   end
 
   # Test extremes.

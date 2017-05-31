@@ -5,7 +5,7 @@ class PriceWithVat
   VAT_RATE = BigDecimal.new '0.21' # 21 %
 
   def initialize price
-    @price = BigDecimal.new price.is_a?(self.class) ? price.without_vat : price
+    @price = self.class.amount price
   end
 
   def without_vat
@@ -27,5 +27,15 @@ class PriceWithVat
   def to_s
     "#{Helper.format_price without_vat} #{Helper.format_price vat}"
   end
+
+  def self.sum prices
+    self.new prices.sum &method(:amount)
+  end
+
+  private
+
+    def self.amount price
+      BigDecimal.new price.is_a?(self) ? price.without_vat : price
+    end
 
 end
