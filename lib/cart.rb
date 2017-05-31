@@ -9,7 +9,7 @@ class Cart
     @products = products
   end
 
-  def sum
+  def sum_price
     @products.sum &:price
   end
 
@@ -17,7 +17,7 @@ class Cart
     @products.sum &:vat
   end
 
-  def sum_with_vat
+  def sum_price_with_vat
     @products.sum &:price_with_vat
   end
 
@@ -30,7 +30,7 @@ class Cart
   end
 
   def to_s
-    Helper.format_price sum
+    Helper.format_price sum_price
   end
 
 end
