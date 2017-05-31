@@ -12,23 +12,9 @@ class ProductTest < Test::Unit::TestCase
   end
 
   def test_price_is_assigned
-    price = BigDecimal.new '49999.99'
+    price = PriceWithVat.new BigDecimal.new '49999.99'
     product = Product.new 'MacBook Pro', price
     assert_equal price, product.price
-  end
-
-  # Test computations.
-
-  def test_vat_is_computed
-    price = PriceWithVat.new '49999.99'
-    product = Product.new 'MacBook Pro', price
-    assert_equal price.vat, product.vat
-  end
-
-  def test_price_with_vat_is_computed
-    price = PriceWithVat.new '49999.99'
-    product = Product.new 'MacBook Pro', price
-    assert_equal price.with_vat, product.price_with_vat
   end
 
   # Test output.

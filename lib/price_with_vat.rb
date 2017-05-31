@@ -20,6 +20,10 @@ class PriceWithVat
     @price + vat
   end
 
+  def == other
+    without_vat == other.without_vat
+  end
+
   def to_s
     "#{Helper.format_price without_vat} #{Helper.format_price vat}"
   end

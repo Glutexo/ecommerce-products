@@ -19,19 +19,19 @@ class CartTest < Test::Unit::TestCase
   def test_cart_computes_sum_of_product_prices
     product_list = PRODUCTS.values
     cart = Cart.new product_list
-    assert_equal product_list.sum(&:price), cart.sum_price
+    assert_equal product_list.sum { |product| product.price.without_vat }, cart.sum_price
   end
 
   def test_cart_computes_sum_of_product_vats
     product_list = PRODUCTS.values
     cart = Cart.new product_list
-    assert_equal product_list.sum(&:vat), cart.sum_vat
+    assert_equal product_list.sum { |product| product.price.vat }, cart.sum_vat
   end
 
   def test_cart_computes_sum_of_product_prices_with_vat
     product_list = PRODUCTS.values
     cart = Cart.new product_list
-    assert_equal product_list.sum(&:price_with_vat), cart.sum_price_with_vat
+    assert_equal product_list.sum { |product| product.price.with_vat }, cart.sum_price_with_vat
   end
 
   # Test extremes.

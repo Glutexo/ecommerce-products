@@ -3,7 +3,7 @@ require_relative 'helper'
 
 class Product
 
-  attr_accessor :name
+  attr_accessor :name, :price
 
   def initialize name, price
     self.name  = name
@@ -12,18 +12,6 @@ class Product
 
   def price= price
     @price = PriceWithVat.new price
-  end
-
-  def price
-    @price.without_vat
-  end
-
-  def vat
-    @price.vat
-  end
-
-  def price_with_vat
-    @price.with_vat
   end
 
   def to_s

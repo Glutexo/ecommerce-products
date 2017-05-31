@@ -46,7 +46,14 @@ class PriceWithVatTest < Test::Unit::TestCase
     assert_equal price.without_vat + price.vat, price.with_vat
   end
 
-  # Test output.
+  # Test internalities.
+
+  def test_equality
+    amount = BigDecimal.new '49999.99'
+    first = PriceWithVat.new amount
+    second = PriceWithVat.new amount
+    assert_equal second, first
+  end
 
   def test_printing
     price = PriceWithVat.new '49999.99'
