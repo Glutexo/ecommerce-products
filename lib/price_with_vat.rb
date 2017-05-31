@@ -4,26 +4,24 @@ class PriceWithVat
 
   VAT_RATE = BigDecimal.new '0.21' # 21 %
 
-  attr_reader :price
-
   def initialize price
-    self.price = price
+    @price = BigDecimal.new price.is_a?(self.class) ? price.without_vat : price
   end
 
-  def price= price
-    @price = BigDecimal.new price.is_a?(self.class) ? price.price : price
+  def without_vat
+    @price
   end
 
   def vat
     @price * VAT_RATE
   end
 
-  def price_with_vat
+  def with_vat
     @price + vat
   end
 
   def to_s
-    "#{Helper.format_price @price} #{Helper.format_price vat}"
+    "#{Helper.format_price without_vat} #{Helper.format_price vat}"
   end
 
 end

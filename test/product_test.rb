@@ -20,24 +20,24 @@ class ProductTest < Test::Unit::TestCase
   # Test computations.
 
   def test_vat_is_computed
-    price_with_vat = PriceWithVat.new '49999.99'
-    product = Product.new 'MacBook Pro', price_with_vat.price
-    assert_equal price_with_vat.vat, product.vat
+    price = PriceWithVat.new '49999.99'
+    product = Product.new 'MacBook Pro', price
+    assert_equal price.vat, product.vat
   end
 
   def test_price_with_vat_is_computed
-    price_with_vat = PriceWithVat.new '49999.99'
-    product = Product.new 'MacBook Pro', price_with_vat.price
-    assert_equal price_with_vat.price_with_vat, product.price_with_vat
+    price = PriceWithVat.new '49999.99'
+    product = Product.new 'MacBook Pro', price
+    assert_equal price.with_vat, product.price_with_vat
   end
 
   # Test output.
 
   def test_printing
     name = 'MacBook Pro'
-    price_with_vat = PriceWithVat.new '49999.99'
-    product = Product.new name, price_with_vat.price
-    assert_equal "#{name} #{price_with_vat}", product.to_s
+    price = PriceWithVat.new '49999.99'
+    product = Product.new name, price
+    assert_equal "#{name} #{price}", product.to_s
   end
 
 end

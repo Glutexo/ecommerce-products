@@ -15,7 +15,7 @@ class Product
   end
 
   def price
-    @price.price
+    @price.without_vat
   end
 
   def vat
@@ -23,7 +23,7 @@ class Product
   end
 
   def price_with_vat
-    @price.price_with_vat
+    @price.with_vat
   end
 
   def to_s
