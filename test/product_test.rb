@@ -52,4 +52,16 @@ class ProductTest < Test::Unit::TestCase
     assert_equal 'MacBook Pro 49999.985', product.to_s
   end
 
+  # Test computations.
+
+  def test_vat_is_computed
+    product = Product.new 'MacBook Pro', '49999.99'
+    assert_equal product.price * Product::VAT_RATE, product.vat
+  end
+
+  def test_price_with_vat_is_computed
+    product = Product.new 'MacBook Pro', '49999.99'
+    assert_equal product.price + product.vat, product.price_with_vat
+  end
+
 end
