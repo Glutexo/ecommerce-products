@@ -16,22 +16,11 @@ class CartTest < Test::Unit::TestCase
 
   # Test sums.
 
-  def test_cart_computes_sum_of_product_prices
+  def test_cart_computes_sum
     product_list = PRODUCTS.values
     cart = Cart.new product_list
-    assert_equal product_list.sum { |product| product.price.without_vat }, cart.sum_price
-  end
-
-  def test_cart_computes_sum_of_product_vats
-    product_list = PRODUCTS.values
-    cart = Cart.new product_list
-    assert_equal product_list.sum { |product| product.price.vat }, cart.sum_vat
-  end
-
-  def test_cart_computes_sum_of_product_prices_with_vat
-    product_list = PRODUCTS.values
-    cart = Cart.new product_list
-    assert_equal product_list.sum { |product| product.price.with_vat }, cart.sum_price_with_vat
+    sum = product_list.sum { |product| product.price.without_vat }
+    assert_equal PriceWithVat.new(sum), cart.sum
   end
 
   # Test extremes.
@@ -49,9 +38,8 @@ class CartTest < Test::Unit::TestCase
   # Test output.
 
   def test_cart_prints_sum
-    product_list = PRODUCTS.values
-    cart = Cart.new product_list
-    assert_equal "#{Helper.format_price(cart.sum_price)} #{Helper.format_price(cart.sum_vat)}", cart.to_s
+    cart = Cart.new PRODUCTS.values
+    assert_equal cart.sum.to_s, cart.to_s
   end
 
 end

@@ -9,16 +9,8 @@ class Cart
     @products = products
   end
 
-  def sum_price
-    @products.sum { |product| product.price.without_vat }
-  end
-
-  def sum_vat
-    @products.sum { |product| product.price.vat }
-  end
-
-  def sum_price_with_vat
-    @products.sum { |product| product.price.with_vat }
+  def sum
+    PriceWithVat.new @products.sum { |product| product.price.without_vat }
   end
 
   def min
@@ -30,7 +22,7 @@ class Cart
   end
 
   def to_s
-    PriceWithVat.new(sum_price).to_s
+    sum.to_s
   end
 
 end
