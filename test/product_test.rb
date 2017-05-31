@@ -3,11 +3,26 @@ require 'test/unit'
 
 class ProductTest < Test::Unit::TestCase
 
+  # Test constructor.
+
+  def test_name_is_assigned
+    name = 'MacBook Pro'
+    product = Product.new name, BigDecimal.new('49999.99')
+    assert_equal name, product.name
+  end
+
+  def test_price_is_assigned
+    price = BigDecimal.new '49999.99'
+    product = Product.new 'MacBook Pro', price
+    assert_equal price, product.price
+  end
+
   # Test value conversion.
 
   def test_integer_price_is_converted_to_big_decimal
     # Floats not tested as one does not simply create a BigDecimal from a float.
     product = Product.new 'MacBook Pro', 49999
+    assert product.price.is_a? BigDecimal
     assert_equal BigDecimal.new('49999'), product.price
   end
 
