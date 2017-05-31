@@ -10,19 +10,24 @@ class Cart
   end
 
   def sum
-    PriceWithVat.new @products.sum { |product| product.price.without_vat }
+    PriceWithVat.new @products.sum &method(:price)
   end
 
   def min
-    @products.min_by { |product| product.price.without_vat }
+    @products.min_by &method(:price)
   end
 
   def max
-    @products.max_by { |product| product.price.without_vat }
+    @products.max_by &method(:price)
   end
 
   def to_s
     sum.to_s
   end
+
+  private
+    def price product
+      product.price.without_vat
+    end
 
 end
