@@ -1,5 +1,4 @@
 require_relative 'price'
-require_relative 'helper'
 
 class Product
 

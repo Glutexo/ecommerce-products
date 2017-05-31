@@ -1,5 +1,4 @@
 require_relative '../lib/price'
-require_relative '../lib/helper'
 require 'test/unit'
 
 class PriceTest < Test::Unit::TestCase
@@ -57,7 +56,7 @@ class PriceTest < Test::Unit::TestCase
 
   def test_printing
     price = Price.new '49999.99'
-    assert_equal "#{Helper.format_price price.without_vat} #{Helper.format_price price.vat}",
+    assert_equal "#{Price.format price.without_vat} #{Price.format price.vat}",
                  price.to_s
   end
 

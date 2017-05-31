@@ -25,11 +25,15 @@ class Price
   end
 
   def to_s
-    "#{Helper.format_price without_vat} #{Helper.format_price vat}"
+    "#{self.class.format without_vat} #{self.class.format vat}"
   end
 
   def self.sum prices
     self.new prices.sum &method(:amount)
+  end
+
+  def self.format big_decimal
+    big_decimal.to_s 'F'
   end
 
   private

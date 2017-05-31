@@ -1,5 +1,4 @@
 require_relative 'product'
-require_relative 'helper'
 
 class Cart
 

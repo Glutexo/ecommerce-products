@@ -28,8 +28,8 @@ represent a shopping cart. Instances of both classes can be printed out.
 `Product` prints its name and price, `Cart` prints the sum of its products. All
 prices are printed in a format "#{price.without_vat} #{price.vat}".
 
-A helper method `Helper.format_price` is provided to format single BigDecimal
-prices in a human-readable way.
+A helper method `Price.format` is provided to format single BigDecimal prices in
+a human-readable way.
 
 ### Example
 
@@ -45,5 +45,5 @@ puts cart # 95980.99 20156.0079
 min = cart.min
 puts min # iMac 39990.0 8397.9
 
-puts Helper.format_price min.price.with_vat # 48387.9
+puts Price.format min.price.with_vat # 48387.9
 ```
