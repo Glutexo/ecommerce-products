@@ -27,6 +27,13 @@ class PriceWithVatTest < Test::Unit::TestCase
     assert_equal BigDecimal.new('49999.99'), price_with_vat.price
   end
 
+  def test_price_with_vat_is_converted_to_big_decimal
+    first = PriceWithVat.new '49999.99'
+    second = PriceWithVat.new first
+    assert second.price.is_a? BigDecimal
+    assert_equal first.price, second.price
+  end
+
   # Test computations.
 
   def test_vat_is_computed

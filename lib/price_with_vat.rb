@@ -11,7 +11,7 @@ class PriceWithVat
   end
 
   def price= price
-    @price = BigDecimal.new price
+    @price = BigDecimal.new price.is_a?(self.class) ? price.price : price
   end
 
   def vat
