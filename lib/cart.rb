@@ -13,6 +13,14 @@ class Cart
     @products.sum &:price
   end
 
+  def sum_vat
+    @products.sum &:vat
+  end
+
+  def sum_with_vat
+    @products.sum &:price_with_vat
+  end
+
   def min
     @products.min_by &:price
   end
