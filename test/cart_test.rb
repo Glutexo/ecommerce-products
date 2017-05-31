@@ -37,10 +37,6 @@ class CartTest < Test::Unit::TestCase
   end
 
   private
-    def big_decimals strings
-      strings.map &BigDecimal.method(:new)
-    end
-
     def sum products
       products.sum &:price
     end
