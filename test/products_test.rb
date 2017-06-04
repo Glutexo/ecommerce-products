@@ -17,12 +17,7 @@ class ProductsTest < Test::Unit::TestCase
                Product.new('Mac Pro', '95990.90'),
                Product.new('iMac', '39990.00') ]
 
-  def test_products_has_products
-    products = ProductList.new PRODUCTS
-    assert_equal PRODUCTS, products.products
-  end
-
-  def test_products_computes_sum
+  def test_sum_is_computed
     products = ProductList.new PRODUCTS
     assert_equal PRODUCTS.sum(&:price), products.sum
   end

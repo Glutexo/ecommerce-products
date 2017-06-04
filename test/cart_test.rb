@@ -9,7 +9,7 @@ class CartTest < Test::Unit::TestCase
 
   # Test constructor.
 
-  def test_cart_sets_products
+  def test_products_are_assigned
     product_list = PRODUCTS.values
     cart = Cart.new product_list
     assert_equal product_list, cart.products
@@ -17,19 +17,19 @@ class CartTest < Test::Unit::TestCase
 
   # Test extremes.
 
-  def test_cart_finds_the_cheapest_product
+  def test_the_cheapest_product_is_found
     cart = Cart.new PRODUCTS.values
     assert_same PRODUCTS[:cheap], cart.min
   end
 
-  def test_cart_finds_the_most_expensive_product
+  def test_the_most_expensive_product_is_found
     cart = Cart.new PRODUCTS.values
     assert_same PRODUCTS[:expensive], cart.max
   end
 
   # Test output.
 
-  def test_cart_prints_sum
+  def test_sum_is_printed
     cart = Cart.new PRODUCTS.values
     assert_equal Helper.format_price(cart.sum), cart.to_s
   end
