@@ -42,7 +42,7 @@ class ProductTest < Test::Unit::TestCase
 
   def test_simple_name_is_printed
     product = Product.new 'MacBook Pro', '49999.90'
-    assert_equal 'MacBook Pro 49999.9', product.to_s
+    test_name_and_price_are_printed product
   end
 
   def test_complex_name_is_printed
@@ -54,17 +54,13 @@ class ProductTest < Test::Unit::TestCase
     # Kind of testing Ruby internals here, but also making sure there is nothing
     # fishy going on.
     product = Product.new object_with_name, '49999.99'
-    assert_equal 'MacBook Pro 49999.99', product.to_s
+    test_name_and_price_are_printed product
   end
 
-  def test_price_uses_float_notation
-    product = Product.new 'MacBook Pro', '49999'
-    assert_equal 'MacBook Pro 49999.0', product.to_s
-  end
-
-  def test_price_is_not_rounded
-    product = Product.new 'MacBook Pro', '49999.985'
-    assert_equal 'MacBook Pro 49999.985', product.to_s
-  end
+  private
+    def test_name_and_price_are_printed product
+      assert_equal "#{product.name} #{Helper.format_price product.price}",
+                   product.to_s
+    end
 
 end
