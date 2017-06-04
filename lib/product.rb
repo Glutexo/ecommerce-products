@@ -24,7 +24,7 @@ class Product
   end
 
   def to_s
-    "#{@name} #{Helper.format_price @price}"
+    "#{@name} #{Helper.format_price @price} #{Helper.format_price sum}"
   end
 
 end

@@ -30,9 +30,15 @@ class ProductsTest < Test::Unit::TestCase
     test_sum_is_computed product_list
   end
 
+  def test_empty_sum_is_computed
+    product_list = ProductList.new []
+    test_sum_is_computed product_list
+  end
+
   private
     def test_sum_is_computed product_list
-      assert_equal product_list.products.map(&:total).sum, product_list.sum
+      assert_equal BigDecimal.new(product_list.products.map(&:total).sum),
+                   product_list.sum
     end
 
 end

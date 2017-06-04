@@ -57,9 +57,16 @@ class ProductTest < Test::Unit::TestCase
     test_name_and_price_are_printed product
   end
 
+  def test_prices_are_printed
+    product = Product.new 'iPhone 7', '21190.00', PRODUCTS
+    test_name_and_price_are_printed product
+  end
+
   private
     def test_name_and_price_are_printed product
-      assert_equal "#{product.name} #{Helper.format_price product.price}",
+      formatted_price = Helper.format_price product.price
+      formatted_sum   = Helper.format_price product.sum
+      assert_equal "#{product.name} #{formatted_price} #{formatted_sum}",
                    product.to_s
     end
 
