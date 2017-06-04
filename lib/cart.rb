@@ -1,16 +1,12 @@
-require_relative 'product'
+require_relative 'products'
 require_relative 'helper'
 
 class Cart
 
-  attr_accessor :products
+  include Products
 
   def initialize products
     @products = products
-  end
-
-  def sum
-    @products.sum &:price
   end
 
   def min

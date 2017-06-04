@@ -7,24 +7,15 @@ class CartTest < Test::Unit::TestCase
                expensive: Product.new('Mac Pro', '95990.90'),
                cheap:     Product.new('iMac', '39990.00') }
 
+  # Test constructor.
 
-  def test_cart_has_products
+  def test_cart_sets_products
     product_list = PRODUCTS.values
     cart = Cart.new product_list
     assert_equal product_list, cart.products
   end
 
-  def test_cart_computes_its_sum
-    product_list = PRODUCTS.values
-    cart = Cart.new product_list
-    assert_equal sum(product_list), cart.sum
-  end
-
-  def test_cart_prints_its_sum
-    product_list = PRODUCTS.values
-    cart = Cart.new product_list
-    assert_equal sum(product_list).to_s('F'), cart.to_s
-  end
+  # Test extremes.
 
   def test_cart_finds_the_cheapest_product
     cart = Cart.new PRODUCTS.values
@@ -36,9 +27,11 @@ class CartTest < Test::Unit::TestCase
     assert_same PRODUCTS[:expensive], cart.max
   end
 
-  private
-    def sum products
-      products.sum &:price
-    end
+  # Test output.
+
+  def test_cart_prints_sum
+    cart = Cart.new PRODUCTS.values
+    assert_equal Helper.format_price(cart.sum), cart.to_s
+  end
 
 end
