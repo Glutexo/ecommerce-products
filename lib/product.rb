@@ -19,6 +19,10 @@ class Product
     @price = price.is_a?(BigDecimal) ? price : BigDecimal.new(price)
   end
 
+  def total
+    @price + sum
+  end
+
   def to_s
     "#{@name} #{Helper.format_price @price}"
   end

@@ -31,6 +31,13 @@ class ProductTest < Test::Unit::TestCase
     assert_equal PRODUCTS, product.products
   end
 
+  # Test computations.
+
+  def test_total_is_computed
+    product = Product.new 'MacBook Pro', '49999.99', PRODUCTS
+    assert_equal product.price + product.sum, product.total
+  end
+
   # Test output.
 
   def test_simple_name_is_printed
