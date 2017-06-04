@@ -1,5 +1,3 @@
-require_relative 'product'
-
 module Products
 
   attr_accessor :products

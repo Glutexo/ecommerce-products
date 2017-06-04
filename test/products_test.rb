@@ -1,3 +1,4 @@
+require_relative '../lib/product'
 require_relative '../lib/products'
 require 'test/unit'
 

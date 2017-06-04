@@ -3,6 +3,9 @@ require 'test/unit'
 
 class ProductTest < Test::Unit::TestCase
 
+  PRODUCTS = [ Product.new('Smart battery case', '2990.00'),
+               Product.new('Lightning to 3.5 mm headphone jack adapter', '279.90') ]
+
   # Test value conversion.
 
   def test_integer_price_is_converted_to_big_decimal
@@ -21,6 +24,11 @@ class ProductTest < Test::Unit::TestCase
     price = BigDecimal.new '49999.99'
     product = Product.new 'MacBook Pro', price
     assert_same price, product.price
+  end
+
+  def test_products_are_assigned
+    product = Product.new 'MacBook Pro', '49999.99', PRODUCTS
+    assert_equal PRODUCTS, product.products
   end
 
   # Test output.

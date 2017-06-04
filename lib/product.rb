@@ -1,12 +1,17 @@
 require 'bigdecimal'
 require_relative 'helper'
+require_relative 'products'
 
 class Product
 
+  include Products
+
   attr_accessor :name, :price
 
-  def initialize name, price
-    self.name  = name
+  def initialize name, price, products = []
+    @name      = name
+    @products  = products
+
     self.price = price
   end
 

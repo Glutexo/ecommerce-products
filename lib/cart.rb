@@ -1,3 +1,4 @@
+require_relative 'product'
 require_relative 'products'
 require_relative 'helper'
 
