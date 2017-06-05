@@ -11,11 +11,11 @@ class Cart
   end
 
   def min
-    @products.min_by &:price
+    @products.min_by &:total
   end
 
   def max
-    @products.max_by &:price
+    @products.max_by &:total
   end
 
   def to_s
