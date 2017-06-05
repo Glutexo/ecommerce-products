@@ -4,6 +4,8 @@ require_relative 'products'
 
 class Product
 
+  NESTED_PREFIX = '  '
+
   include Products
 
   attr_accessor :name, :price
@@ -24,7 +26,22 @@ class Product
   end
 
   def to_s
-    "#{@name} #{Helper.format_price @price} #{Helper.format_price sum}"
+    ([to_s_self] + to_s_products.flatten).join "\n"
   end
+
+  private
+    def to_s_self
+      [ @name,
+        Helper.format_price(@price),
+        Helper.format_price(sum) ].join ' '
+    end
+
+    def to_s_products
+      @products.map(&:to_s).map &method(:prefix_all_lines)
+    end
+
+    def prefix_all_lines string
+      string.split("\n").map { |line| NESTED_PREFIX + line }.join("\n")
+    end
 
 end

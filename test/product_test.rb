@@ -62,12 +62,58 @@ class ProductTest < Test::Unit::TestCase
     test_name_and_price_are_printed product
   end
 
+  def test_subproducts_are_printed
+    base_product = Product.new 'iPhone 7', '21190.00'
+    subproducts    = [ Product.new('Smart battery case', '2990.00'),
+                       Product.new('Lightning to 3.5 mm headphone jack adapter', '279.90') ]
+    nested_product = Product.new base_product.name, base_product.price, subproducts
+
+    lines = [ product_first_line(nested_product),
+              subproducts.map { |product| prefix product.to_s, 1 }
+    ].flatten
+    assert_equal lines.join("\n"), nested_product.to_s
+  end
+
+  def test_subsubproducts_are_printed
+    first_subsubproducts  = [ Product.new('Smart battery case', '2990.00'),
+                              Product.new('Lightning to 3.5 mm headphone jack adapter', '279.90') ]
+    first_subproduct = Product.new 'iPhone 7',
+                                   '21190.00',
+                                   first_subsubproducts
+
+    second_subsubproducts  = [ Product.new('Magnetic charging cable', '899.00'),
+                               Product.new('Camelia sport band', '1490.00') ]
+    second_subproduct = Product.new 'Apple Watch Series 2',
+                                    '8290.00',
+                                    second_subsubproducts
+
+    nested_product = Product.new "iPhone + Apple Watch",
+                                 '0.00',
+                                 [first_subproduct, second_subproduct]
+
+    lines = [ product_first_line(nested_product),
+              prefix(product_first_line(first_subproduct), 1),
+              first_subsubproducts.map { |product| prefix product.to_s, 2 },
+              prefix(product_first_line(second_subproduct), 1),
+              second_subsubproducts.map { |product| prefix product.to_s, 2 }
+    ].flatten
+    assert_equal lines.join("\n"), nested_product.to_s
+  end
+
   private
     def test_name_and_price_are_printed product
       formatted_price = Helper.format_price product.price
       formatted_sum   = Helper.format_price product.sum
       assert_equal "#{product.name} #{formatted_price} #{formatted_sum}",
-                   product.to_s
+                   product_first_line(product.to_s)
+    end
+
+    def product_first_line product
+      product.to_s.split("\n").first
+    end
+
+    def prefix string, level
+      Product::NESTED_PREFIX * level + string
     end
 
 end
